@@ -83,8 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateSlideContent(currentSlideIndex);
         } else {
             // Last slide - action complete or redirect
-            alert('Onboarding complete! Redirecting to home or sign-up...');
-            // window.location.href = '/home/'; // Example redirection
+            window.location.href = '/login-signup/';
         }
     });
 

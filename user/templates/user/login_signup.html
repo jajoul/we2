@@ -20,8 +20,8 @@
         </div>
 
         <div class="ls-buttons">
-            <button class="ls-button primary-button">Sign in</button>
-            <button class="ls-button secondary-button">Sign up</button>
+            <a href="{% url 'user:login' %}" class="ls-button primary-button">Sign in</a>
+            <a href="{% url 'user:signup-process' %}" class="ls-button secondary-button">Sign up</a>
         </div>
     </div>
 
