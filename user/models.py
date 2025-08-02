@@ -26,7 +26,7 @@ class User(AbstractUser):
     )
     profile_picture = models.ImageField(
         _("profile picture"),
-        upload_to='profile_pics/', 
+        upload_to='profile_pics/users/', 
         blank=True, 
         null=True, 
         help_text=_("The user's profile picture.")

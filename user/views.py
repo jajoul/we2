@@ -3,6 +3,7 @@ from django.views.generic import TemplateView,View
 from .forms import SignUpStep1Form, SignUpStep2Form
 from .models import User
 from django.contrib.auth import authenticate, login
+from insight.models import Channel
 
 # Create your views here.
 class WelcomeView(TemplateView):
@@ -98,9 +99,17 @@ class LoginView(View):
             auth_user = authenticate(request, username=user.username, password=password)
             if auth_user is not None:
                 login(request, auth_user)
-                return redirect('insight:create_channel')
+                return redirect('user:dashboard')
         except User.DoesNotExist:
             pass  # Fall through to the error message
         
         return render(request, 'user/login_page.html', {'error_message': 'Invalid email or password.'})
+
+class DashboardView(TemplateView):
+    template_name = 'user/dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['channels'] = Channel.objects.order_by('-created_at')[:10]
+        return context
         

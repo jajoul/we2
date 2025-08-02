@@ -1,0 +1,31 @@
+{% extends 'insight/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Latest Channels</h1>
+    <div class="channel-list">
+        {% for channel in channels %}
+        <div class="channel-item">
+            <div class="channel-icon">
+                {% if channel.profile_picture %}
+                <img src="{{ channel.profile_picture.url }}" alt="{{ channel.name }}">
+                {% else %}
+                <img src="{% static 'images/user.png' %}" alt="Default channel picture">
+                {% endif %}
+            </div>
+            <div class="channel-info">
+                <h2>{{ channel.name }}</h2>
+                <p>{{ channel.about }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

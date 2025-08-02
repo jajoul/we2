@@ -9,5 +9,6 @@ urlpatterns = [
     path('login-signup/', views.LoginSignupView.as_view(), name='login-signup'),
     path('signup-process/', views.SignupProcessView.as_view(), name='signup-process'),
     path('login/', views.LoginView.as_view(), name='login'),
+    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
 
 ]

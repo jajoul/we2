@@ -7,7 +7,7 @@ class Channel(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owned_channels')
     name = models.CharField(max_length=100)
     about = models.TextField(blank=True)
-    profile_picture = models.ImageField(upload_to='channel_pics/', blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/channels/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
