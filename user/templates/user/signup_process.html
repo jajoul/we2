@@ -1,10 +1,10 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>{% trans "Sign Up" %}</title>
     <link rel="stylesheet" href="{% static 'css/signup_process.css' %}">
 </head>
 <body>
@@ -16,7 +16,7 @@
                     <path d="M15 18L9 12L15 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
-            <h1 id="signupTitle">Sign up</h1>
+            <h1 id="signupTitle">{% trans "Sign up" %}</h1>
         </div>
 
         <form id="signupForm" method="post" enctype="multipart/form-data" novalidate>
@@ -29,17 +29,17 @@
                     <input type="hidden" name="step" value="1">
                     <div class="signup-card">
                         <div class="form-group">
-                            <label for="{{ step1_form.username.id_for_label }}">Username</label>
+                            <label for="{{ step1_form.username.id_for_label }}">{% trans "Username" %}</label>
                             {{ step1_form.username }}
                             {% if step1_form.username.errors %}<div class="error-message">{{ step1_form.username.errors.as_text }}</div>{% endif %}
                         </div>
                         <div class="form-group">
-                            <label for="{{ step1_form.email.id_for_label }}">Email</label>
+                            <label for="{{ step1_form.email.id_for_label }}">{% trans "Email" %}</label>
                             {{ step1_form.email }}
                             {% if step1_form.email.errors %}<div class="error-message">{{ step1_form.email.errors.as_text }}</div>{% endif %}
                         </div>
                         <div class="form-group">
-                            <label for="{{ step1_form.password.id_for_label }}">Password</label>
+                            <label for="{{ step1_form.password.id_for_label }}">{% trans "Password" %}</label>
                             <div class="password-input-container">
                                 {{ step1_form.password }}
                                 <span class="toggle-password" data-target="{{ step1_form.password.id_for_label }}"></span>
@@ -47,7 +47,7 @@
                             {% if step1_form.password.errors %}<div class="error-message">{{ step1_form.password.errors.as_text }}</div>{% endif %}
                         </div>
                         <div class="form-group">
-                            <label for="{{ step1_form.password2.id_for_label }}">Confirm Password</label>
+                            <label for="{{ step1_form.password2.id_for_label }}">{% trans "Confirm Password" %}</label>
                             <div class="password-input-container">
                                 {{ step1_form.password2 }}
                                 <span class="toggle-password" data-target="{{ step1_form.password2.id_for_label }}"></span>
@@ -66,8 +66,8 @@
                                 </ul>
                             </div>
                         {% endif %}
-                        <button type="submit" class="next-step-button">Next</button>
-                        <p class="login-link">Already have an account? <a href="{% url 'user:login-signup' %}">Login</a></p>
+                        <button type="submit" class="next-step-button">{% trans "Next" %}</button>
+                        <p class="login-link">{% trans "Already have an account?" %} <a href="{% url 'user:login-signup' %}">{% trans "Login" %}</a></p>
                     </div>
                 </div>
                 {% elif current_step_index == 1 %}
@@ -76,7 +76,7 @@
                     <input type="hidden" name="step" value="2">
                     <div class="signup-card">
                         <div class="form-group profile-picture-group">
-                            <label for="{{ step2_form.profile_picture.id_for_label }}">Profile picture</label>
+                            <label for="{{ step2_form.profile_picture.id_for_label }}">{% trans "Profile picture" %}</label>
                             <div class="profile-picture-upload">
                                 {{ step2_form.profile_picture }}
                                 <label for="{{ step2_form.profile_picture.id_for_label }}" class="profile-pic-placeholder">
@@ -86,12 +86,12 @@
                             {% if step2_form.profile_picture.errors %}<div class="error-message">{{ step2_form.profile_picture.errors.as_text }}</div>{% endif %}
                         </div>
                         <div class="form-group">
-                            <label for="{{ step2_form.full_name.id_for_label }}">Full Name</label>
+                            <label for="{{ step2_form.full_name.id_for_label }}">{% trans "Full Name" %}</label>
                             {{ step2_form.full_name }}
                             {% if step2_form.full_name.errors %}<div class="error-message">{{ step2_form.full_name.errors.as_text }}</div>{% endif %}
                         </div>
                         <div class="form-group">
-                            <label>Gender</label>
+                            <label>{% trans "Gender" %}</label>
                             <div class="gender-options">
                                 {% for radio in step2_form.gender %}
                                     {{ radio.tag }}
@@ -101,7 +101,7 @@
                             {% if step2_form.gender.errors %}<div class="error-message">{{ step2_form.gender.errors.as_text }}</div>{% endif %}
                         </div>
                         {% if step2_form.non_field_errors %}<div class="error-message">{{ step2_form.non_field_errors.as_text }}</div>{% endif %}
-                        <button type="submit" class="next-step-button">Next</button>
+                        <button type="submit" class="next-step-button">{% trans "Next" %}</button>
                     </div>
                 </div>
                 {% elif current_step_index == 2 %}
@@ -110,10 +110,10 @@
                     <input type="hidden" name="step" value="3">
                     <div class="signup-card">
                         <img src="{% static 'images/we2me2-logo.png' %}" alt="App Logo" class="success-logo">
-                        <h2 class="success-title">Congratulations</h2>
-                        <p class="success-message">Registration has been successful</p>
-                        <p class="success-instruction">Please continue to start the application</p>
-                        <button type="submit" class="start-app-button">Start</button>
+                        <h2 class="success-title">{% trans "Congratulations" %}</h2>
+                        <p class="success-message">{% trans "Registration has been successful" %}</p>
+                        <p class="success-instruction">{% trans "Please continue to start the application" %}</p>
+                        <button type="submit" class="start-app-button">{% trans "Start" %}</button>
                     </div>
                 </div>
                 {% endif %}

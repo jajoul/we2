@@ -1,0 +1,91 @@
+# Persian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-08-02 23:23+0330\n"
+"PO-Revision-Date: 2025-08-02 23:10+0330\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fa\n"
+"Language-Team: fa <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: user/models.py:9
+msgid "full name"
+msgstr "نام کامل"
+
+#: user/models.py:12
+msgid "your full name"
+msgstr "نام کامل شما"
+
+#: user/models.py:15
+msgid "Female"
+msgstr "زن"
+
+#: user/models.py:16
+msgid "Male"
+msgstr "مرد"
+
+#: user/models.py:17
+msgid "I don't want to say"
+msgstr "نمیخواهم بگویم"
+
+#: user/models.py:20
+msgid "gender"
+msgstr "جنسیت"
+
+#: user/models.py:25
+msgid "your gender"
+msgstr "جنسیت شما"
+
+#: user/models.py:28
+msgid "profile picture"
+msgstr "عکس پروفایل"
+
+#: user/models.py:32
+msgid "The user's profile picture."
+msgstr "عکس پروفایل کاربر."
+
+#: user/models.py:35
+msgid "user"
+msgstr "کاربر"
+
+#: user/models.py:36
+msgid "users"
+msgstr "کاربران"
+
+#: user/templates/user/welcome.html:5
+msgid "Welcome - Home Violence Project"
+msgstr "خوش آمدید - پروژه خشونت خانگی"
+
+#: user/templates/user/welcome.html:29
+msgid "Welcome to We Too"
+msgstr "به We Too خوش آمدید"
+
+#: user/templates/user/welcome.html:30
+msgid "A safe space for survivors of domestic violence to connect, share, and heal."
+msgstr "فضایی امن برای بازماندگان خشونت خانگی برای ارتباط، اشتراک گذاری و بهبودی."
+
+#: user/templates/user/welcome.html:34
+msgid "Find Your Voice"
+msgstr "صدای خود را پیدا کنید"
+
+#: user/templates/user/welcome.html:35
+msgid "Share your story, connect with others who understand, and find strength in community."
+msgstr "داستان خود را به اشتراک بگذارید، با دیگرانی که درک می کنند ارتباط برقرار کنید و در جامعه قدرت پیدا کنید."
+
+#: user/templates/user/welcome.html:39
+msgid "You Are Not Alone"
+msgstr "شما تنها نیستید"
+
+#: user/templates/user/welcome.html:40
+msgid "Join a supportive network of survivors and allies. Together, we can break the cycle of violence."
+msgstr "به یک شبکه حمایتی از بازماندگان و متحدان بپیوندید. با هم می توانیم چرخه خشونت را بشکنیم."

@@ -8,26 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Removed const featureBubbles = document.getElementById('featureBubbles');
 
     // Define the content for each slide
-    const slidesData = [
-        {
-            image: '/static/images/ilust1.jpg',
-            title: 'Lorem ipsum dolor sit amet',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-            
-        },
-        {
-            image: '/static/images/raise-hand.jpg',
-            title: 'Lorem ipsum dolor sit amet',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-            // Removed showBubbles: false
-        },
-        {
-            image: '/static/images/happy-family.jpg',
-            title: 'Lorem ipsum dolor sit amet',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-            // Removed showBubbles: true
-        }
-    ];
+    
 
     let currentSlideIndex = 0;
     const totalSlides = slidesData.length;

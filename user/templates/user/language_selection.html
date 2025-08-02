@@ -1,10 +1,10 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Language</title>
+    <title>{% trans "Select Language" %}</title>
     <link rel="stylesheet" href="{% static 'css/language_selection.css' %}">
 </head>
 <body>
@@ -15,35 +15,40 @@
         </div>
 
         <div class="lang-card">
-            <h2>Select Language</h2>
+            <h2>{% trans "Select Language" %}</h2>
 
-            <div class="language-option">
-                <input type="radio" id="lang-english" name="language" value="en" checked>
-                <label for="lang-english" class="language-label">
-                    <span class="radio-custom"></span>
-                    <div class="lang-details">
-                        <p class="lang-region">International</p>
-                        <p class="lang-name">English</p>
-                        <p class="lang-short">Eng</p>
-                    </div>
-                    <img src="{% static 'images/us-icon.png' %}" alt="UK Flag" class="lang-flag">
-                </label>
-            </div>
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{% url 'user:welcome' %}">
+                
+                <div class="language-option">
+                    <input type="radio" id="lang-english" name="language" value="en" {% if request.LANGUAGE_CODE == 'en' %}checked{% endif %}>
+                    <label for="lang-english" class="language-label">
+                        <span class="radio-custom"></span>
+                        <div class="lang-details">
+                            <p class="lang-region">International</p>
+                            <p class="lang-name">English</p>
+                            <p class="lang-short">Eng</p>
+                        </div>
+                        <img src="{% static 'images/us-icon.png' %}" alt="US Flag" class="lang-flag">
+                    </label>
+                </div>
 
-            <div class="language-option">
-                <input type="radio" id="lang-farsi" name="language" value="fa">
-                <label for="lang-farsi" class="language-label">
-                    <span class="radio-custom"></span>
-                    <div class="lang-details">
-                        <p class="lang-region">Iran</p>
-                        <p class="lang-name">Farsi</p>
-                        <p class="lang-short">فارسی</p>
-                    </div>
-                    <img src="{% static 'images/ir-icon.png' %}" alt="Iran Flag" class="lang-flag">
-                </label>
-            </div>
+                <div class="language-option">
+                    <input type="radio" id="lang-farsi" name="language" value="fa" {% if request.LANGUAGE_CODE == 'fa' %}checked{% endif %}>
+                    <label for="lang-farsi" class="language-label">
+                        <span class="radio-custom"></span>
+                        <div class="lang-details">
+                            <p class="lang-region">Iran</p>
+                            <p class="lang-name">Farsi</p>
+                            <p class="lang-short">فارسی</p>
+                        </div>
+                        <img src="{% static 'images/ir-icon.png' %}" alt="Iran Flag" class="lang-flag">
+                    </label>
+                </div>
 
-            <button type="button" class="lang-next-button">Next</button>
+                <button type="submit" class="lang-next-button">{% trans "Next" %}</button>
+            </form>
         </div>
     </div>
 
