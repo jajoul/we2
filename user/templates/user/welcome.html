@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Home Violence Project</title>
+    <link rel="stylesheet" href="{% static 'css/onboarding.css' %}">
+</head>
+<body>
+
+    <div class="onboarding-container">
+        <div class="onboarding-slide-content">
+            <div class="slide-header">
+                <a href="#" class="back-arrow" id="backArrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="slide-illustration" id="slideIllustration">
+                </div>
+            <div class="slide-content">
+                <h1 id="slideTitle"></h1>
+                <p id="slideDescription"></p>
+            </div>
+        </div>
+
+        <div class="onboarding-navigation">
+            <div class="pagination-dots" id="paginationDots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+            <button class="next-button" id="nextButton">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="{% static 'js/onboarding.js' %}"></script>
+</body>
+</html>

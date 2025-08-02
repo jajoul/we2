@@ -1,0 +1,13 @@
+{% extends 'insight/base.html' %}
+
+{% block title %}{{ channel.name }}{% endblock %}
+
+{% block content %}
+<div class="channel-detail-container">
+    <h1>{{ channel.name }}</h1>
+    <p>{{ channel.about }}</p>
+    {% if channel.profile_picture %}
+        <img src="{{ channel.profile_picture.url }}" alt="{{ channel.name }}'s profile picture">
+    {% endif %}
+</div>
+{% endblock %}

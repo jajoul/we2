@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-logo-container">
+            <img src="{% static 'images/we2me2-logo.png' %}" alt="We Too Logo" class="app-logo">
+        </div>
+        <div class="login-header">
+            <a href="#" class="back-arrow" id="loginBackArrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <h1 id="loginTitle">Sign in</h1>
+        </div>
+
+        <div class="login-card">
+            <form id="loginForm" method="post" novalidate>
+                {% csrf_token %}
+                {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="id_email">Email</label>
+                    <input type="email" name="email" id="id_email" placeholder="xxxx@gmail.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_password">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" name="password" id="id_password" placeholder="***********" required>
+                        <span class="toggle-password">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.94 17.94C16.21 19.68 14.16 20.73 12 20.73C7.45 20.73 3.5 15.65 1.58 12C2.53 10.42 3.69 9.07 5.04 8.01M9.99997 4.24C10.74 4.09 11.49 4 12 4C16.55 4 20.5 9.09 22.42 12C21.47 13.58 20.31 14.93 18.96 15.99M12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7C9.24 7 7 9.24 7 12C7 12.63 7.12 13.24 7.33 13.82M12 10V10.01M2 2L22 22" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <a href="#" class="forgot-password-link">Forgot password</a>
+
+                <button type="submit" class="login-button">Login</button>
+            </form>
+
+            <div class="or-separator">
+                <span class="line"></span>
+                <span class="text">or continue with</span>
+                <span class="line"></span>
+            </div>
+
+            <button type="button" class="google-button">
+                <img src="{% static 'images/google-logo.svg' %}" alt="Google Logo" class="google-logo">
+                Google
+            </button>
+        </div>
+        
+        <p class="signup-link">Don't have an account yet? <a href="#">Signup</a></p>
+    </div>
+
+    <script src="{% static 'js/login_page.js' %}"></script>
+</body>
+</html>

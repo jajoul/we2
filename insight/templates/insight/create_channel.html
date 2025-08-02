@@ -1,0 +1,127 @@
+{% extends 'insight/base.html' %}
+{% load static %}
+
+{% block title %}Create New Channel{% endblock %}
+
+{% block extra_css %}
+{# No extra CSS needed here if all styles are in base.css #}
+{% endblock %}
+
+{% block content %}
+<div class="create-channel-container">
+    <div class="create-channel-header">
+        <a href="#" class="back-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 19L5 12L12 5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        <h1 class="create-channel-title">Create new channel</h1>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="create-channel-card">
+        {% csrf_token %}
+        <div class="profile-picture-section">
+            <span class="section-label">Profile picture</span>
+            <div class="channel-picture-upload">
+                {{ form.profile_picture }}
+                <label for="{{ form.profile_picture.id_for_label }}" class="upload-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4V20" stroke="#6A1B9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 12H20" stroke="#6A1B9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}" class="section-label">Channel name</label>
+            {{ form.name }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.about.id_for_label }}" class="section-label">About channel</label>
+            {{ form.about }}
+        </div>
+
+        <button type="submit" class="create-channel-button">Create</button>
+    </form>
+
+    <div class="topics-followed-section">
+        <h2 class="topics-followed-title">Toppics you followed</h2>
+        <div class="topic-item">
+            <div class="topic-header">
+                <img src="{% static 'images/placeholder_icon.png' %}" alt="Topic Icon" class="topic-icon">
+                <div class="topic-info">
+                    <span class="topic-heading">Topic about abbas</span>
+                    <span class="topic-date">24/12/2024 • 14:30</span>
+                </div>
+            </div>
+            <p class="topic-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            <div class="topic-stats">
+                <span class="stat-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9V5C14 4.46957 13.7893 3.96086 13.4142 3.58579C13.0391 3.21071 12.5304 3 12 3H7.5C6.96957 3 6.46086 3.21071 6.08579 3.58579C5.71071 3.96086 5.5 4.46957 5.5 5V15C5.5 15.5304 5.71071 16.0391 6.08579 16.4142C6.46086 16.7893 6.66957 17 7 17H12L17 21V12C17 11.4696 16.7893 10.9609 16.4142 10.5858C16.0391 10.2107 15.5304 10 15 10H14" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    123 Likes
+                </span>
+                <span class="stat-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15C21.398 15 21.7825 14.8812 22.1132 14.6599C22.4439 14.4385 22.7105 14.1235 22.8893 13.751C23.0681 13.3785 23.151 12.9592 23.1308 12.5369C23.1106 12.1146 22.9877 11.7061 22.7725 11.3414C22.5573 10.9767 22.2543 10.6659 21.8896 10.4284C21.5249 10.1909 21.1066 10.0319 20.6693 9.96065C20.232 9.88941 19.7853 9.9077 19.3582 10.0145C18.9311 10.1213 18.5323 10.3149 18.188 10.5843C17.8437 10.8537 17.5606 11.1925 17.3541 11.5794L13 22L9 13L1 15L3 9L7 8L10 1L12 4L16 3L18 7L21 6L23 11V15H21Z" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    2 Comments
+                </span>
+            </div>
+        </div>
+        {# Repeat topic-item for other topics #}
+        <div class="topic-item">
+            <div class="topic-header">
+                <img src="{% static 'images/placeholder_icon.png' %}" alt="Topic Icon" class="topic-icon">
+                <div class="topic-info">
+                    <span class="topic-heading">Lorem topic</span>
+                    <span class="topic-date">24/12/2024 • 14:30</span>
+                </div>
+            </div>
+            <p class="topic-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            <div class="topic-stats">
+                <span class="stat-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9V5C14 4.46957 13.7893 3.96086 13.4142 3.58579C13.0391 3.21071 12.5304 3 12 3H7.5C6.96957 3 6.46086 3.21071 6.08579 3.58579C5.71071 3.96086 5.5 4.46957 5.5 5V15C5.5 15.5304 5.71071 16.0391 6.08579 16.4142C6.46086 16.7893 6.66957 17 7 17H12L17 21V12C17 11.4696 16.7893 10.9609 16.4142 10.5858C16.0391 10.2107 15.5304 10 15 10H14" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    123 Likes
+                </span>
+                <span class="stat-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15C21.398 15 21.7825 14.8812 22.1132 14.6599C22.4439 14.4385 22.7105 14.1235 22.8893 13.751C23.0681 13.3785 23.151 12.9592 23.1308 12.5369C23.1106 12.1146 22.9877 11.7061 22.7725 11.3414C22.5573 10.9767 22.2543 10.6659 21.8896 10.4284C21.5249 10.1909 21.1066 10.0319 20.6693 9.96065C20.232 9.88941 19.7853 9.9077 19.3582 10.0145C18.9311 10.1213 18.5323 10.3149 18.188 10.5843C17.8437 10.8537 17.5606 11.1925 17.3541 11.5794L13 22L9 13L1 15L3 9L7 8L10 1L12 4L16 3L18 7L21 6L23 11V15H21Z" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    2 Comments
+                </span>
+            </div>
+        </div>
+        <div class="topic-item">
+            <div class="topic-header">
+                <img src="{% static 'images/placeholder_icon.png' %}" alt="Topic Icon" class="topic-icon">
+                <div class="topic-info">
+                    <span class="topic-heading">Topic about abbas</span>
+                    <span class="topic-date">24/12/2024 • 14:30</span>
+                </div>
+            </div>
+            <p class="topic-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            <div class="topic-stats">
+                <span class="stat-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9V5C14 4.46957 13.7893 3.96086 13.4142 3.58579C13.0391 3.21071 12.5304 3 12 3H7.5C6.96957 3 6.46086 3.21071 6.08579 3.58579C5.71071 3.96086 5.5 4.46957 5.5 5V15C5.5 15.5304 5.71071 16.0391 6.08579 16.4142C6.46086 16.7893 6.66957 17 7 17H12L17 21V12C17 11.4696 16.7893 10.9609 16.4142 10.5858C16.0391 10.2107 15.5304 10 15 10H14" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    123 Likes
+                </span>
+                <span class="stat-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15C21.398 15 21.7825 14.8812 22.1132 14.6599C22.4439 14.4385 22.7105 14.1235 22.8893 13.751C23.0681 13.3785 23.151 12.9592 23.1308 12.5369C23.1106 12.1146 22.9877 11.7061 22.7725 11.3414C22.5573 10.9767 22.2543 10.6659 21.8896 10.4284C21.5249 10.1909 21.1066 10.0319 20.6693 9.96065C20.232 9.88941 19.7853 9.9077 19.3582 10.0145C18.9311 10.1213 18.5323 10.3149 18.188 10.5843C17.8437 10.8537 17.5606 11.1925 17.3541 11.5794L13 22L9 13L1 15L3 9L7 8L10 1L12 4L16 3L18 7L21 6L23 11V15H21Z" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    2 Comments
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

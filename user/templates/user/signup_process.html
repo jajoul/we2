@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/signup_process.css' %}">
+</head>
+<body>
+
+    <div class="signup-container">
+        <div class="signup-header">
+            <a href="#" class="back-arrow" id="signupBackArrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <h1 id="signupTitle">Sign up</h1>
+        </div>
+
+        <form id="signupForm" method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <div class="signup-steps-wrapper">
+                
+                {% if current_step_index == 0 %}
+                <!-- Step 1: User Credentials -->
+                <div class="signup-step active" data-step="0">
+                    <input type="hidden" name="step" value="1">
+                    <div class="signup-card">
+                        <div class="form-group">
+                            <label for="{{ step1_form.username.id_for_label }}">Username</label>
+                            {{ step1_form.username }}
+                            {% if step1_form.username.errors %}<div class="error-message">{{ step1_form.username.errors.as_text }}</div>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ step1_form.email.id_for_label }}">Email</label>
+                            {{ step1_form.email }}
+                            {% if step1_form.email.errors %}<div class="error-message">{{ step1_form.email.errors.as_text }}</div>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ step1_form.password.id_for_label }}">Password</label>
+                            <div class="password-input-container">
+                                {{ step1_form.password }}
+                                <span class="toggle-password" data-target="{{ step1_form.password.id_for_label }}"></span>
+                            </div>
+                            {% if step1_form.password.errors %}<div class="error-message">{{ step1_form.password.errors.as_text }}</div>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ step1_form.password2.id_for_label }}">Confirm Password</label>
+                            <div class="password-input-container">
+                                {{ step1_form.password2 }}
+                                <span class="toggle-password" data-target="{{ step1_form.password2.id_for_label }}"></span>
+                            </div>
+                            {% if step1_form.password2.errors %}<div class="error-message">{{ step1_form.password2.errors.as_text }}</div>{% endif %}
+                        </div>
+                        {% if step1_form.non_field_errors %}<div class="error-message">{{ step1_form.non_field_errors.as_ul }}</div>{% endif %}
+                        {% if step1_form.errors %}
+                            <div class="error-message">
+                                <ul>
+                                    {% for field, errors in step1_form.errors.items %}
+                                        {% for error in errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <button type="submit" class="next-step-button">Next</button>
+                        <p class="login-link">Already have an account? <a href="{% url 'user:login-signup' %}">Login</a></p>
+                    </div>
+                </div>
+                {% elif current_step_index == 1 %}
+                <!-- Step 2: Profile Information -->
+                <div class="signup-step active" data-step="1">
+                    <input type="hidden" name="step" value="2">
+                    <div class="signup-card">
+                        <div class="form-group profile-picture-group">
+                            <label for="{{ step2_form.profile_picture.id_for_label }}">Profile picture</label>
+                            <div class="profile-picture-upload">
+                                {{ step2_form.profile_picture }}
+                                <label for="{{ step2_form.profile_picture.id_for_label }}" class="profile-pic-placeholder">
+                                    <img src="{% static 'images/user.png' %}" alt="Profile Picture" id="profilePicPreview">
+                                </label>
+                            </div>
+                            {% if step2_form.profile_picture.errors %}<div class="error-message">{{ step2_form.profile_picture.errors.as_text }}</div>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ step2_form.full_name.id_for_label }}">Full Name</label>
+                            {{ step2_form.full_name }}
+                            {% if step2_form.full_name.errors %}<div class="error-message">{{ step2_form.full_name.errors.as_text }}</div>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="gender-options">
+                                {% for radio in step2_form.gender %}
+                                    {{ radio.tag }}
+                                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                                {% endfor %}
+                            </div>
+                            {% if step2_form.gender.errors %}<div class="error-message">{{ step2_form.gender.errors.as_text }}</div>{% endif %}
+                        </div>
+                        {% if step2_form.non_field_errors %}<div class="error-message">{{ step2_form.non_field_errors.as_text }}</div>{% endif %}
+                        <button type="submit" class="next-step-button">Next</button>
+                    </div>
+                </div>
+                {% elif current_step_index == 2 %}
+                <!-- Step 3: Success -->
+                <div class="signup-step active" data-step="2">
+                    <input type="hidden" name="step" value="3">
+                    <div class="signup-card">
+                        <img src="{% static 'images/we2me2-logo.png' %}" alt="App Logo" class="success-logo">
+                        <h2 class="success-title">Congratulations</h2>
+                        <p class="success-message">Registration has been successful</p>
+                        <p class="success-instruction">Please continue to start the application</p>
+                        <button type="submit" class="start-app-button">Start</button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </form>
+
+        <div class="signup-pagination-dots">
+            <span class="dot {% if current_step_index == 0 %}active{% endif %}" data-step="0"></span>
+            <span class="dot {% if current_step_index == 1 %}active{% endif %}" data-step="1"></span>
+            <span class="dot {% if current_step_index == 2 %}active{% endif %}" data-step="2"></span>
+        </div>
+    </div>
+
+    <script>
+        const initialCurrentStep = parseInt("{{ current_step_index|default:0 }}", 10);
+    </script>
+    <script src="{% static 'js/signup_process.js' %}"></script>
+
+</body>
+</html>

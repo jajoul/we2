@@ -1,0 +1,792 @@
+/* base.css */
+
+/* General Body and HTML structure */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Layout Wrapper - For desktop, this will contain sidebar and content */
+.main-layout-wrapper {
+    display: flex; /* Always a flex container for desktop behavior */
+    flex-grow: 1; /* Allows it to take up remaining vertical space */
+    background-color: #F8F8F8; /* Default background for content area */
+    box-sizing: border-box;
+    width: 100%; /* Mobile first: full width */
+    margin: 0; /* Mobile first: no margin */
+    /* On mobile, this will act as a column implicitly as its children are block by default */
+}
+
+/* App Container - This specifically wraps the main content inside main-layout-wrapper */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Takes remaining space beside sidebar on desktop */
+    /* min-height will be adjusted in media query for desktop, not needed here for mobile */
+    box-sizing: border-box;
+
+    /* Mobile First: Full width */
+    width: 100%;
+    margin: 0 auto; /* Center mobile content horizontally */
+    max-width: 480px; /* Constrain mobile content width */
+    min-height: calc(100vh - 80px - 70px); /* Header (~80px) + Footer (~70px) */
+    /* Adjusted min-height calculation for mobile to prevent content from going under footer */
+}
+
+
+/* Header Styling */
+.app-header {
+    background: linear-gradient(135deg, #6A1B9A 0%, #8E24AA 100%); /* Mobile gradient */
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    padding: 15px 0; /* Vertical padding */
+}
+
+.header-content-wrapper {
+    max-width: 480px; /* Constrain header content for mobile */
+    margin: 0 auto;
+    padding: 0 15px; /* Horizontal padding for mobile screens */
+    box-sizing: border-box;
+    /* No flex properties here for mobile; children handle their own flex */
+}
+
+/* --- Mobile Header Specific Styles --- */
+.header-desktop-view {
+    display: none; /* Hide desktop header elements by default on mobile */
+}
+
+.header-mobile-view {
+    display: flex; /* Use flex for mobile header container */
+    flex-direction: column; /* Stack top-main and greeting vertically */
+    width: 100%; /* Ensure it spans the wrapper */
+}
+
+.header-main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Space between top elements and greeting */
+}
+
+.hamburger-menu, .search-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.hamburger-menu svg, .search-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.header-logo-plus {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.plus-icon {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.small-w-logo {
+    width: 30px;
+    height: auto;
+    cursor: pointer; /* Make it clear it's clickable */
+}
+
+.header-greeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-greeting h1 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Main Content Area */
+.app-content {
+    flex-grow: 1;
+    overflow-y: auto; /* Enable scrolling for content if it overflows */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally within its container */
+    justify-content: flex-start;
+}
+
+/* --- Mobile Footer Specific Styles --- */
+.app-footer {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Sticky footer for mobile */
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex; /* Show by default on mobile */
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: space-around; /* Distribute items */
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 10px; /* Maintain some padding for edges */
+    box-sizing: border-box;
+    min-height: 50px;
+    gap: 15px; /* Add a gap between flex items */
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #B0B0B0; /* Light grey for inactive icons and text */
+    font-size: 12px;
+    padding: 8px 5px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    flex-grow: 1; /* Allow items to grow and take equal space */
+    text-align: center;
+    min-width: 70px; /* Give each item a minimum width to prevent collapse and ensure spacing */
+    box-sizing: border-box; /* Ensure padding/border don't add to width */
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    transition: stroke 0.3s ease, color 0.3s ease;
+    display: block;
+}
+
+.nav-item span {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.active-nav-item {
+    background-color: #E0BBE4;
+    color: #6A1B9A;
+    padding: 8px 15px; /* Increased horizontal padding for active item */
+    flex-grow: 0; /* Active item shouldn't grow as much if it has more padding */
+    min-width: unset; /* Remove min-width for active item to let padding define its size */
+}
+
+/* --- Sidebar Styles (Hidden by default, shown on desktop) --- */
+.app-sidebar {
+    display: none; /* Hide sidebar by default on mobile */
+}
+
+/* --- Modal Popup Styles (General) - for Channels modal --- */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place even when scrolling */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto; /* For older browsers/fallbacks if flex centering isn't supported */
+    padding: 0; /* Remove padding here, sections will have their own */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Adjust width for mobile */
+    max-width: 400px; /* Max width for larger screens */
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* To contain rounded corners of inner elements */
+}
+
+.modal-title {
+    background-color: #fff; /* Ensure background matches modal for a seamless look */
+    color: #6A1B9A; /* Purple color */
+    font-size: 20px; /* Smaller font size as per image */
+    font-weight: bold;
+    padding: 20px; /* Padding inside the title section */
+    text-align: center;
+    border-bottom: 1px solid #eee; /* Separator line */
+    margin: 0; /* Remove default margin */
+}
+
+/* --- Channels Specific Styles (for the popup) --- */
+.channel-option {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px; /* Padding for each channel item */
+    border-bottom: 1px solid #eee; /* Separator line */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: left; /* Align text to the left */
+}
+
+.channel-option:hover {
+    background-color: #f5f5f5;
+}
+
+/* Remove bottom border for the last channel option */
+.modal-content .channel-option:last-of-type:not(.create-new-channel) {
+    border-bottom: none;
+}
+/* Ensure the "create new channel" always has a top border if it's the last one before button */
+.create-new-channel {
+    border-top: 1px solid #eee; /* Added a top border for consistency with other channel options */
+}
+
+
+.channel-icon-wrapper {
+    width: 35px; /* Size for the icon container */
+    height: 35px; /* Size for the icon container */
+    border-radius: 50%; /* Make it round */
+    background-color: #E0BBE4; /* Light purple background for icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px; /* Space between icon and text */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.channel-w-logo {
+    width: 20px; /* Size of the W logo inside the circle */
+    height: auto;
+}
+
+.plus-icon-wrapper {
+    background-color: #fff; /* White background for the plus icon */
+    border: 1px solid #6A1B9A; /* Purple border for plus icon */
+}
+
+.plus-icon-wrapper svg {
+    width: 20px; /* Size of the plus icon */
+    height: 20px;
+    display: block; /* Remove extra space below SVG */
+}
+
+.channel-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    flex-grow: 1; /* Allow name to take up remaining space */
+}
+
+.modal-add-button {
+    background-color: #6A1B9A; /* Purple button background */
+    color: #fff;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: calc(100% - 40px); /* Full width minus padding */
+    margin: 20px; /* Margin around the button */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.modal-add-button:hover {
+    background-color: #8E24AA;
+}
+
+/* --- Create New Channel Page Specific Styles (Mobile First) --- */
+.create-channel-container {
+    flex-grow: 1; /* Allow it to take up available space */
+    width: 100%;
+    max-width: 480px; /* Constrain content for mobile */
+    margin: 0 auto; /* Center for mobile */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px; /* Add some padding at the bottom */
+    box-sizing: border-box;
+}
+
+.create-channel-header {
+    display: flex;
+    align-items: center;
+    padding: 20px; /* Padding for header */
+    background-color: #fff; /* White background for header on mobile */
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+    margin-bottom: 20px; /* Space below header */
+}
+
+.create-channel-header .back-arrow {
+    margin-right: 15px;
+    display: flex; /* To center SVG */
+    align-items: center;
+    color: #333; /* Default color for arrow */
+}
+
+.create-channel-header .back-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+.create-channel-title {
+    font-size: 20px; /* Font size for mobile header title */
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    flex-grow: 1; /* Allows title to take space */
+    text-align: center; /* Center the title */
+    transform: translateX(-12px); /* Adjust to visually center due to back arrow */
+}
+
+
+.create-channel-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px; /* Internal padding for the card */
+    margin: 0 20px; /* Horizontal margin to push it in from edges */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between sections inside the card */
+    box-sizing: border-box;
+    width: calc(100% - 40px); /* Adjusted width */
+}
+
+.profile-picture-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Take full width of card */
+}
+
+.section-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px; /* Space below label */
+    align-self: flex-start; /* Align label to the left within its section */
+}
+
+.channel-picture-upload {
+    width: 100px; /* Size of the circle */
+    height: 100px; /* Size of the circle */
+    border-radius: 50%;
+    border: 1px solid #E0BBE4; /* Light purple border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px; /* Space below label */
+}
+
+.channel-picture-upload .upload-icon-wrapper {
+    background-color: #E0BBE4; /* Light purple background for plus icon */
+    width: 40px; /* Size of inner plus circle */
+    height: 40px; /* Size of inner plus circle */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.channel-picture-upload .upload-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align label and input to the left */
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px 0; /* Vertical padding, no horizontal padding as border is bottom only */
+    border: none;
+    border-bottom: 1px solid #ccc; /* Underline style input */
+    font-size: 16px;
+    color: #333;
+    outline: none; /* Remove outline on focus */
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]::placeholder {
+    color: #B0B0B0; /* Placeholder color */
+}
+
+.create-channel-button {
+    background-color: #6A1B9A; /* Purple button */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 0; /* Padding for the button */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%; /* Full width within the card */
+    margin-top: 10px; /* Space above button */
+}
+
+.create-channel-button:hover {
+    background-color: #8E24AA;
+}
+
+.topics-followed-section {
+    display: none; /* Hidden by default on mobile */
+}
+
+
+/* --- Desktop View Adjustments (larger screens) --- */
+@media (min-width: 768px) {
+    /* Main Layout Wrapper becomes a row for sidebar + content */
+    .main-layout-wrapper {
+        flex-direction: row; /* Sidebar and content side-by-side */
+        justify-content: flex-start;
+        min-height: calc(100vh - 80px); /* Adjust for header height */
+    }
+
+    /* Hide mobile header and footer */
+    .header-mobile-view,
+    .app-footer {
+        display: none;
+    }
+
+    /* Show desktop header elements */
+    .header-desktop-view {
+        display: flex;
+        /* Ensure its children (left/right sections) are correctly spaced */
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; /* Ensure it spans the header-content-wrapper */
+    }
+
+    /* Header Background for Desktop */
+    .app-header {
+        background: #6A1B9A; /* Solid purple for desktop */
+        padding: 20px 0; /* Adjusted vertical padding */
+    }
+
+    .header-content-wrapper {
+        max-width: 1200px; /* Adjust as per your desktop design max width */
+        margin: 0 auto; /* Center the header content on wider screens */
+        padding: 0 30px; /* Horizontal padding for desktop header content */
+        flex-direction: row; /* Main header content in a row */
+        justify-content: space-between; /* To push left and right sections apart */
+        align-items: center;
+        display: flex; /* Ensure it's a flex container */
+    }
+
+    /* Desktop Left Section */
+    .desktop-left-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .desktop-w-logo-large {
+        width: 40px;
+        height: auto;
+    }
+
+    .desktop-we-too {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    /* Desktop Right Section */
+    .desktop-right-section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .desktop-w-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer; /* Make it clear it's clickable */
+    }
+
+    .desktop-w-logo-small {
+        width: 25px;
+        height: auto;
+    }
+
+    .profile-pic {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .hamburger-menu.desktop-hamburger svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Main App Container on Desktop */
+    .app-container {
+        max-width: none; /* No max-width here, it will grow with flex-grow */
+        margin: 0; /* Remove auto margin */
+        min-height: auto; /* Allow content to determine height */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 0 10px 10px 0; /* Only right corners rounded */
+        overflow: hidden; /* Important for content within */
+    }
+
+    /* --- Sidebar Styles (Desktop Only) --- */
+    .app-sidebar {
+        width: 250px;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex; /* Show sidebar on desktop */
+        flex-direction: column;
+        border-right: 1px solid #eee;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px 0 0 10px;
+        flex-shrink: 0;
+        overflow-y: auto;
+        min-height: calc(100vh - 80px); /* Make sidebar span full height of content area */
+    }
+
+    .sidebar-search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #F8F8F8;
+        border-radius: 8px;
+        padding: 10px 15px;
+        margin-bottom: 30px;
+        color: #B0B0B0;
+    }
+
+    .sidebar-search svg {
+        width: 20px;
+        height: 20px;
+        color: #B0B0B0;
+    }
+
+    .sidebar-search span {
+        font-size: 15px;
+    }
+
+    .sidebar-menu-heading {
+        font-size: 12px;
+        color: #B0B0B0;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding-left: 15px;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .sidebar-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-decoration: none;
+        color: #333;
+        padding: 12px 15px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .sidebar-nav-item svg {
+        width: 22px;
+        height: 22px;
+        color: #B0B0B0;
+        flex-shrink: 0;
+    }
+
+    .sidebar-nav-item span {
+        font-size: 16px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .sidebar-nav-item:hover {
+        background-color: #F0F0F0;
+    }
+
+    .sidebar-nav-item.active {
+        background-color: #E0BBE4;
+        color: #6A1B9A;
+        font-weight: bold;
+    }
+
+    .sidebar-nav-item.active svg {
+        color: #6A1B9A;
+    }
+
+    /* Main Content Area adjustments for desktop when sidebar is present */
+    .app-content {
+        padding: 30px;
+        min-height: auto;
+        flex-direction: row; /* Content area itself becomes a row for desktop layout */
+        align-items: flex-start; /* Align content to the top */
+        justify-content: space-between; /* Space out the columns */
+        gap: 30px; /* Gap between the two main content columns */
+    }
+
+    /* --- Create New Channel Page Specific Styles (Desktop) --- */
+    .create-channel-container {
+        flex-direction: row; /* Layout side-by-side on desktop */
+        max-width: none; /* Remove max-width for desktop */
+        margin: 0; /* Remove auto margin */
+        padding: 0; /* Remove padding */
+        flex-grow: 1; /* Take up available space */
+        justify-content: center; /* Center content in the middle part of the screen */
+        align-items: flex-start; /* Align sections to the top */
+        gap: 50px; /* Space between the two main content columns */
+    }
+
+    .create-channel-header {
+        display: flex; /* Keep flex for structure */
+        background-color: transparent; /* No background on desktop header */
+        box-shadow: none; /* No shadow on desktop header */
+        padding: 0; /* No padding here, handled by .create-channel-container */
+        margin-bottom: 0; /* No margin */
+        position: absolute; /* Position it relative to the main container or app-content */
+        top: 30px; /* Adjust based on overall layout */
+        left: 30px; /* Adjust to align with sidebar content */
+        width: auto;
+    }
+
+    .create-channel-header .back-arrow {
+        color: #333; /* Black arrow for desktop */
+    }
+
+    .create-channel-title {
+        font-size: 24px; /* Larger font size for desktop header title */
+        color: #333; /* Black title for desktop */
+        text-align: left; /* Align to left */
+        transform: translateX(0); /* Reset transform */
+    }
+
+    .create-channel-card {
+        padding: 40px; /* Larger padding for desktop card */
+        margin: 0; /* Remove horizontal margin */
+        width: 500px; /* Fixed width for the card on desktop */
+        align-self: flex-start; /* Align card to the top */
+    }
+
+    .topics-followed-section {
+        display: block; /* Show on desktop */
+        width: 350px; /* Fixed width for topics section */
+        flex-shrink: 0; /* Prevent it from shrinking */
+        align-self: flex-start; /* Align to the top */
+    }
+
+    .topics-followed-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .topic-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .topic-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .topic-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #eee; /* Placeholder background */
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+    .topic-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .topic-heading {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .topic-date {
+        font-size: 12px;
+        color: #999;
+    }
+
+    .topic-description {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .topic-stats {
+        display: flex;
+        gap: 20px;
+        font-size: 12px;
+        color: #B0B0B0;
+        align-items: center;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+}

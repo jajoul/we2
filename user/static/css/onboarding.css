@@ -1,0 +1,204 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Light background */
+}
+
+/* Onboarding Container */
+.onboarding-container {
+    width: 100%;
+    max-width: 400px; /* Typical mobile width */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Occupy full height on mobile */
+    position: relative;
+}
+
+/* Individual Slide Content */
+.onboarding-slide-content { /* Renamed from .onboarding-slide */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    flex-grow: 1; /* Allow content to grow and fill space */
+}
+
+.slide-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+.back-arrow {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-illustration {
+    flex-grow: 1; /* Allows illustration to take available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Still good to have for potential future elements if needed */
+    width: 100%;
+    max-width: 300px; /* Limit illustration width */
+    margin: 0 auto;
+}
+
+.slide-illustration img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease-in-out; /* For fade effect */
+}
+
+.slide-content {
+    padding: 20px 0;
+    transition: opacity 0.5s ease-in-out; /* For fade effect */
+}
+
+.slide-content h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.slide-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Removed .feature-bubbles and .bubble styles */
+
+
+/* Onboarding Navigation */
+.onboarding-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 80px; /* Fixed height for navigation area */
+    box-sizing: border-box;
+}
+
+.pagination-dots {
+    display: flex;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #D3D3D3; /* Light grey */
+    cursor: pointer;
+    transition: background-color 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
+}
+
+.dot.active {
+    background-color: #9370DB; /* Purple */
+    width: 25px; /* Wider for active dot */
+    border-radius: 5px; /* Rounded rectangle */
+}
+
+.next-button {
+    background-color: #9370DB; /* Purple */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #7B68EE; /* Slightly darker purple */
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+    body {
+        background-color: #f0f2f5; /* Maintain light background */
+    }
+
+    .onboarding-container {
+        max-width: 900px; /* Wider for desktop */
+        height: 600px; /* Fixed height for desktop */
+        flex-direction: row; /* Layout content side-by-side */
+    }
+
+    .onboarding-slide-content { /* Renamed */
+        padding: 40px;
+        flex-direction: row; /* Image and content side-by-side */
+        text-align: left;
+        align-items: flex-start; /* Align content to the top */
+    }
+
+    .slide-illustration {
+        flex: 1; /* Takes available space */
+        max-width: 50%; /* Limit illustration width */
+        margin-right: 40px; /* Space between illustration and content */
+    }
+
+    .slide-content {
+        flex: 1; /* Takes available space */
+        padding: 0;
+    }
+
+    .slide-content h1 {
+        font-size: 32px;
+        margin-top: 0;
+    }
+
+    .slide-content p {
+        font-size: 18px;
+    }
+
+    .onboarding-navigation {
+        position: absolute; /* Position navigation at the bottom right */
+        bottom: 20px;
+        right: 20px;
+        width: auto;
+        padding: 0;
+        height: auto;
+    }
+
+    .pagination-dots {
+        justify-content: flex-end; /* Align dots to the right */
+    }
+
+    .next-button {
+        margin-left: 20px; /* Space between dots and button */
+    }
+
+    .slide-header {
+        position: absolute; /* Position header at top left */
+        top: 20px;
+        left: 20px;
+        width: auto;
+        padding: 0;
+    }
+}

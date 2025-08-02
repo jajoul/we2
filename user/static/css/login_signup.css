@@ -1,0 +1,147 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #6A1B9A; /* Darker purple background */
+    background: linear-gradient(135deg, #6A1B9A 0%, #8E24AA 100%); /* Gradient as per image */
+    color: #fff; /* White text for better contrast on purple */
+    overflow: auto; /* Allow scrolling if content overflows */
+    padding: 20px; /* Add some padding around the edges for mobile */
+    box-sizing: border-box;
+}
+
+/* Login/Signup Container (main wrapper) */
+.ls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center text within the container */
+    width: 100%;
+    max-width: 450px; /* Constrain width for mobile view */
+    box-sizing: border-box;
+    /* This container sits directly on the gradient background, no white card like language_selection */
+}
+
+/* Logo */
+.ls-logo {
+    margin-bottom: 40px; /* Space between logo and content */
+    width: 180px; /* Slightly larger logo */
+    height: auto;
+    /* flex-shrink: 0; If you want to ensure it doesn't shrink */
+}
+
+.ls-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Content Area (Title and Description) */
+.ls-content {
+    margin-bottom: 50px; /* Space between content and buttons */
+    padding: 0 20px; /* Padding for text to not touch edges */
+}
+
+.ls-content h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.ls-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85); /* Slightly transparent white for description */
+}
+
+/* Buttons Container */
+.ls-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    gap: 15px; /* Space between buttons */
+    max-width: 300px; /* Constrain button width even if container is wider */
+    margin-left: auto; /* Center buttons */
+    margin-right: auto; /* Center buttons */
+}
+
+.ls-button {
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* In case you make them anchor tags later */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-button {
+    background-color: #fff; /* White background for primary */
+    color: #9C27B0; /* Purple text for primary */
+    border: 2px solid #fff; /* White border */
+}
+
+.primary-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    background-color: transparent; /* Transparent background for secondary */
+    color: #fff; /* White text for secondary */
+    border: 2px solid rgba(255, 255, 255, 0.7); /* White outline with transparency */
+}
+
+.secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight white fill on hover */
+    border-color: #fff; /* Solid white border on hover */
+    transform: translateY(-2px);
+}
+
+.ls-button:active {
+    transform: translateY(0);
+}
+
+
+/* Desktop View */
+@media (min-width: 768px) {
+    .ls-container {
+        max-width: 600px; /* Wider for desktop */
+        padding: 40px;
+    }
+
+    .ls-logo {
+        width: 250px; /* Larger logo for desktop */
+        margin-bottom: 60px;
+    }
+
+    .ls-content {
+        margin-bottom: 70px;
+    }
+
+    .ls-content h1 {
+        font-size: 48px; /* Larger title */
+    }
+
+    .ls-content p {
+        font-size: 18px;
+    }
+
+    .ls-buttons {
+        max-width: 350px; /* Slightly wider buttons */
+        gap: 20px; /* More space between buttons */
+    }
+
+    .ls-button {
+        padding: 18px 30px;
+        font-size: 20px;
+    }
+}
