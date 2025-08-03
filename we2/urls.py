@@ -1,35 +1,22 @@
-"""we2 URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
-from django.conf.urls.i18n import i18n_patterns
+from user.views import LanguageSelectionView
 from .views import set_language
 
-# URL patterns that should not be translated
+# These patterns are NOT translated and are accessible from the root
 urlpatterns = [
-    path('set_language/', set_language, name='set_language'),
     path('admin/', admin.site.urls),
+    path('set_language/', set_language, name='set_language'),
+    path('', LanguageSelectionView.as_view(), name='language-selection-root'),
 ]
 
-# URL patterns that should be translated
+# These patterns ARE translated and will be prefixed with the language code (e.g., /en/, /fa/)
 urlpatterns += i18n_patterns(
-    path('insight/', include('insight.urls')),
     path('', include('user.urls')),
+    path('insight/', include('insight.urls')),
 )
 
 if settings.DEBUG:

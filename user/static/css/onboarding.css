@@ -202,3 +202,7 @@ body {
         padding: 0;
     }
 }
+
+html[lang="fa"] body {
+    font-family: 'Vazirmatn', sans-serif;
+}

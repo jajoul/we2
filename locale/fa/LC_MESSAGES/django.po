@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-02 23:23+0330\n"
-"PO-Revision-Date: 2025-08-02 23:10+0330\n"
+"POT-Creation-Date: 2025-08-03 01:12+0330\n"
+"PO-Revision-Date: 2025-08-03 01:12+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fa\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -62,30 +62,98 @@ msgstr "کاربر"
 msgid "users"
 msgstr "کاربران"
 
-#: user/templates/user/welcome.html:5
-msgid "Welcome - Home Violence Project"
-msgstr "خوش آمدید - پروژه خشونت خانگی"
+#: user/views.py:16 user/views.py:39
+msgid "Welcome"
+msgstr "خوش آمدید"
 
-#: user/templates/user/welcome.html:29
+#: user/views.py:21
 msgid "Welcome to We Too"
 msgstr "به We Too خوش آمدید"
 
-#: user/templates/user/welcome.html:30
+#: user/views.py:22
 msgid "A safe space for survivors of domestic violence to connect, share, and heal."
 msgstr "فضایی امن برای بازماندگان خشونت خانگی برای ارتباط، اشتراک گذاری و بهبودی."
 
-#: user/templates/user/welcome.html:34
+#: user/views.py:26
 msgid "Find Your Voice"
 msgstr "صدای خود را پیدا کنید"
 
-#: user/templates/user/welcome.html:35
+#: user/views.py:27
 msgid "Share your story, connect with others who understand, and find strength in community."
 msgstr "داستان خود را به اشتراک بگذارید، با دیگرانی که درک می کنند ارتباط برقرار کنید و در جامعه قدرت پیدا کنید."
 
-#: user/templates/user/welcome.html:39
+#: user/views.py:31
 msgid "You Are Not Alone"
 msgstr "شما تنها نیستید"
 
-#: user/templates/user/welcome.html:40
+#: user/views.py:32
 msgid "Join a supportive network of survivors and allies. Together, we can break the cycle of violence."
 msgstr "به یک شبکه حمایتی از بازماندگان و متحدان بپیوندید. با هم می توانیم چرخه خشونت را بشکنیم."
+
+#: user/views.py:51
+msgid "Login/Signup"
+msgstr "ورود/ثبت نام"
+
+#: user/templates/user/signup_process.html:6
+msgid "Sign Up"
+msgstr "ثبت نام"
+
+#: user/templates/user/signup_process.html:16
+msgid "Username"
+msgstr "نام کاربری"
+
+#: user/templates/user/signup_process.html:21
+msgid "Email"
+msgstr "ایمیل"
+
+#: user/templates/user/signup_process.html:26
+msgid "Password"
+msgstr "رمز عبور"
+
+#: user/templates/user/signup_process.html:33
+msgid "Confirm Password"
+msgstr "تایید رمز عبور"
+
+#: user/templates/user/signup_process.html:48
+msgid "Next"
+msgstr "بعدی"
+
+#: user/templates/user/signup_process.html:49
+msgid "Already have an account?"
+msgstr "قبلا ثبت نام کرده اید؟"
+
+#: user/templates/user/signup_process.html:49
+msgid "Login"
+msgstr "ورود"
+
+#: user/templates/user/signup_process.html:58
+msgid "Full Name"
+msgstr "نام کامل"
+
+#: user/templates/user/signup_process.html:63
+msgid "Gender"
+msgstr "جنسیت"
+
+#: user/templates/user/signup_process.html:73
+msgid "Congratulations"
+msgstr "تبریک میگم"
+
+#: user/templates/user/signup_process.html:74
+msgid "Registration has been successful"
+msgstr "ثبت نام با موفقیت انجام شد"
+
+#: user/templates/user/signup_process.html:75
+msgid "Please continue to start the application"
+msgstr "لطفا برای شروع برنامه ادامه دهید"
+
+#: user/templates/user/signup_process.html:76
+msgid "Start"
+msgstr "شروع"
+
+#: user/templates/user/login_signup.html:18
+msgid "Sign in"
+msgstr "ورود"
+
+#: user/templates/user/login_signup.html:19
+msgid "Sign up"
+msgstr "ثبت نام"

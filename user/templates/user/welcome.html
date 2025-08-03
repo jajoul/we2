@@ -1,14 +1,18 @@
 {% load static i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}" {% if lang == 'fa' %}dir="rtl"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Welcome - Home Violence Project" %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/onboarding.css' %}">
 </head>
 <body>
 
+    
     <div class="onboarding-container">
         <div class="onboarding-slide-content">
             <div class="slide-header">
@@ -41,23 +45,7 @@
     </div>
 
     <script>
-        const slidesData = [
-            {
-                image: '{% static "images/ilust1.jpg" %}',
-                title: '{% trans "Welcome to We Too" %}',
-                description: '{% trans "A safe space for survivors of domestic violence to connect, share, and heal." %}'
-            },
-            {
-                image: '{% static "images/raise-hand.jpg" %}',
-                title: '{% trans "Find Your Voice" %}',
-                description: '{% trans "Share your story, connect with others who understand, and find strength in community." %}'
-            },
-            {
-                image: '{% static "images/happy-family.jpg" %}',
-                title: '{% trans "You Are Not Alone" %}',
-                description: '{% trans "Join a supportive network of survivors and allies. Together, we can break the cycle of violence." %}'
-            }
-        ];
+        const slidesData = JSON.parse('{{ slides_data_json|escapejs }}');
     </script>
     <script src="{% static 'js/onboarding.js' %}?v=2"></script>
 </body>
