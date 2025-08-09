@@ -90,7 +90,7 @@ else:
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'wetoo_db',
             'USER': 'wetoo_db',
-            'PASSWORD': 'W724BrO7^n2v*',
+            'PASSWORD': 'W724BrO7^n2v',
             'HOST': 'localhost',
             'PORT': '3306',
             'OPTIONS': {
