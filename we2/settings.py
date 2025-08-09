@@ -86,18 +86,15 @@ if DEBUG:
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'wetoo_db',
-            'USER': 'wetoo_db',
-            'PASSWORD': 'W724BrO7^n2v',
-            'HOST': 'localhost',
-            'PORT': '3306',
-            'OPTIONS': {
-                'charset': 'utf8mb4',
-            },
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wetoo_db',
+        'USER': 'wetoo_db',
+        'PASSWORD': 'z16TN1j|7t3;',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
